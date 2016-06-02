@@ -8,7 +8,7 @@
 int main()
 {
 	srand(time(0));
-	struct bstree *tree, *node;
+	struct bstree *tree;
 	char word[100], *w;
 	char **words = malloc(200000 * sizeof(char *));
 	int i;
@@ -29,10 +29,10 @@ int main()
 		if (i % 10000 == 0) {
 			w = words[getrand(0, i - 1)];
 			t = wtime();
-			node = bstree_lookup(tree, w);
+			bstree_lookup(tree, w);
 			t = wtime() - t;
 			FILE *x = fopen("bstree.dat", "a+");
-			fprintf(x, "%d   %.9f\n", i, t);
+			fprintf(x, "%d\t%.9f\n", i, t);
 			fclose(x);
 		}
 	}
